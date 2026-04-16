@@ -16,12 +16,22 @@ const KNOWN_BRANDS = [
  'apple', 'flipkart', 'myntra', 'zomato', 'swiggy'
 ];
 const OFFICIAL_DOMAINS = {
-  amazon: ['amazon.com', 'amazon.in'],
+ amazon: ['amazon.com', 'amazon.in'],
  paypal: ['paypal.com'],
  google: ['google.com'],
  netflix: ['netflix.com'],
  paytm: ['paytm.com'],
+ sbi: ['sbi.co.in', 'onlinesbi.sbi'],
+ hdfc: ['hdfcbank.com'],
+ icici: ['icicibank.com'],
  facebook: ['facebook.com'],
+ instagram: ['instagram.com'],
+ microsoft: ['microsoft.com', 'live.com', 'outlook.com'],
+ apple: ['apple.com', 'icloud.com'],
+ flipkart: ['flipkart.com'],
+ myntra: ['myntra.com'],
+ zomato: ['zomato.com'],
+ swiggy: ['swiggy.com'],
 };
 function analyzeURL(urlString) {
  let score = 0;

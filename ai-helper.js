@@ -1,5 +1,5 @@
 // ai-helper.js — SignalForge AI Integration Layer (Groq API)
-const GROQ_API_KEY = 'YOUR API KEY HERE'
+const GROQ_API_KEY = 'PASTE_YOUR_GROQ_API_KEY_HERE'
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 const SCAM_TYPES = [

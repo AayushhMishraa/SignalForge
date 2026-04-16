@@ -1,47 +1,68 @@
 # SignalForge
 
-> **Smart Phishing Protection Chrome Extension** 🛡️
+A Chrome extension that detects phishing URLs before you open them. Built for my B.Tech 6th semester minor project.
 
-SignalForge is an AI-powered Chrome extension designed to detect, analyze, and block phishing URLs before you even open them. Using a combination of advanced heuristic patterns and Large Language Model (LLM) analysis via the Groq API, SignalForge accurately rates links and explains potential threats in plain English.
+## What it does
 
-![SignalForge Demo](assets/demo.png) *(Note: You can add a screenshot later and put it in an assets folder)*
+SignalForge checks URLs in real-time and warns you if they look suspicious. It uses pattern matching to catch common phishing tricks like:
+- Fake domains (amaz0n.com instead of amazon.com)
+- Suspicious TLDs (.xyz, .tk, etc.)
+- URL shorteners hiding the real destination
+- IP addresses instead of domain names
+- Missing HTTPS
+- And a bunch of other red flags
 
-## ✨ Features
+If a URL scores high enough on the threat scale, you get a popup explaining what's wrong with it. You can go back or continue anyway (your choice).
 
-- **Real-Time Threat Detection:** Intercepts suspicious URLs instantly upon navigation.
-- **Advanced Scoring Engine:** Checks for IP-based links, suspicious TLDs, known phishing keywords, URL shortener abuse, and fake domain structures (e.g. `amaz0n.com`).
-- **AI Explanations:** Uses Groq's high-speed LLaMA-based API to write a human-friendly explanation of why the page is dangerous.
-- **Smart Loop Guard:** Prevents annoying popup loops when malicious sites attempt to rapidly auto-refresh.
-- **Safe Website Toasts:** Confirms completely safe sites via a sleek, non-intrusive UI toast that automatically disappears.
-- **Bypass Protections:** Allows users to bypass warnings (with a 3-strike rule before permanently allowing a site for development ease).
+## How to install
 
-## 🚀 Installation (Load Unpacked)
+Since this isn't on the Chrome Web Store, you'll need to load it manually:
 
-Since this extension is in development and not yet on the Chrome Web Store, you can install it manually:
+1. Download or clone this repo
+2. Open Chrome and go to `chrome://extensions/`
+3. Turn on **Developer mode** (top right corner)
+4. Click **Load unpacked**
+5. Select the SignalForge folder
+6. Done
 
-1. Clone or download this repository to your computer.
-2. Open Google Chrome and type `chrome://extensions/` into the URL bar.
-3. Turn on **Developer mode** (the toggle switch in the top right corner).
-4. Click the **Load unpacked** button in the top left.
-5. Select the folder containing the SignalForge files.
-6. **Done!** SignalForge is now active.
+## AI Analysis (optional)
 
-## ⚙️ Configuration (Important!)
+The extension can use Groq's API to explain threats in plain English. To enable this:
 
-To enable the AI capabilities, you need a free Groq API key:
-1. Go to the [Groq Console](https://console.groq.com) and create an account.
-2. Generate an API Key.
-3. Open `ai-helper.js` in a text editor.
-4. Replace `"YOUR_GROQ_API_KEY_HERE"` with your actual API key. 
+1. Get a free API key from [console.groq.com](https://console.groq.com)
+2. Open `ai-helper.js` in a text editor
+3. Replace `'YOUR_GROQ_API_KEY_HERE'` with your actual key
 
-*(Note: Never commit your real API key to public GitHub! Keep it private.)*
+If you don't add a key, the extension still works — you just won't get the AI explanations.
 
-## 🛠️ Tech Stack
+## Tech stack
 
-- **Core:** Vanilla JavaScript, HTML, CSS (No heavy frameworks — incredibly fast and lightweight).
-- **Chrome APIs:** `chrome.webNavigation`, `chrome.storage.local`, `chrome.windows`, `chrome.tabs`.
-- **AI Integration:** Groq API (LLaMA-3) for instantaneous LLM threat analysis.
+- Vanilla JavaScript (no frameworks)
+- Chrome Extension APIs (webNavigation, storage, tabs)
+- Groq API for AI analysis (optional)
 
-## 📄 License
+## Files
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- `background.js` — service worker that intercepts URLs
+- `content.js` — shows safe/unsafe notifications on pages
+- `rules.js` — scoring engine with 12 detection rules
+- `popup.html/js/css` — warning popup and manual scanner
+- `ai-helper.js` — Groq API integration
+- `history.js` — stores recent scans
+
+## Known limitations
+
+- Can't inject warnings on Chrome's own error pages (chrome-error://)
+- Redirect checking doesn't work due to CORS
+- No database of known phishing sites (just pattern matching)
+- AI analysis requires internet connection
+
+## License
+
+MIT License — do whatever you want with it.
+
+## Notes
+
+This was built as a learning project for college. It's not meant to replace proper antivirus software or browser security features. Use at your own risk.
+
+If you find bugs or have suggestions, feel free to open an issue.

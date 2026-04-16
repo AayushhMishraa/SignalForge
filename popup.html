@@ -6,45 +6,61 @@
  <title>SignalForge</title>
 </head>
 <body>
- <!-- Header -->
- <div class='header'>
- <span class='logo'>SignalForge</span>
- <span class='tagline'>Smart Phishing Protection</span>
- </div>
- <!-- Warning View (shown when a suspicious URL is intercepted) -->
+
+ <!-- Warning View -->
  <div id='warning-view' class='view hidden'>
- <div id='threat-badge' class='threat-badge'></div>
- <div id='score-display' class='score-display'></div>
- <div id='url-display' class='url-display'></div>
- <div class='section-label'>Why is this suspicious?</div>
- <ul id='reasons-list' class='reasons-list'></ul>
- <div class='section-label'>AI Analysis</div>
- <div id='scam-type' class='scam-type-badge'></div>
- <div id='ai-explanation' class='ai-explanation'>Analyzing with AI...</div>
- <div class='section-label'>Redirect Info</div>
- <div id='redirect-info' class='redirect-info'>Checking redirects...</div>
- <div class='action-buttons'>
- <button id='btn-goback' class='btn-safe'>Go Back (Recommended)</button>
- <button id='btn-continue' class='btn-danger'>Continue Anyway</button>
+  <div class='warning-top-bar'>
+   <span class='shield'>🛡</span>
+   <span class='brand'>SignalForge</span>
+  </div>
+
+  <div class='threat-header'>
+   <div id='threat-icon' class='threat-icon'></div>
+   <div>
+    <div id='threat-label' class='threat-label'></div>
+    <div id='score-display' class='score-display'></div>
+   </div>
+  </div>
+
+  <div class='label'>Flagged URL</div>
+  <div id='url-display' class='url-text'></div>
+
+  <div class='label'>Why is this suspicious?</div>
+  <ul id='reasons-list' class='reasons-list'></ul>
+
+  <div class='label'>AI Analysis</div>
+  <div id='scam-type' class='scam-badge'></div>
+  <div id='ai-explanation' class='ai-text'>Analyzing with AI...</div>
+
+  <div class='action-buttons'>
+   <button id='btn-goback' class='btn-primary'>← Go Back</button>
+   <button id='btn-continue' class='btn-secondary'>Continue Anyway</button>
+  </div>
  </div>
- </div>
+
  <!-- Default View -->
  <div id='default-view' class='view'>
- <div class='manual-scan'>
- <input type='text' id='manual-url' placeholder='Paste a URL to scan...' />
- <button id='btn-scan'>Scan</button>
- </div>
- <div id='manual-result' class='manual-result hidden'></div>
-  <div class='section-label' style='display:flex; justify-content:space-between; align-items:center;'>
-    <span>Recent Scans</span>
-    <button id='btn-clear' style='background:none; border:none; color:#B00020; cursor:pointer; font-size:11px; text-decoration:underline;'>Clear Data</button>
+  <div class='header'>
+   <div class='logo'>SignalForge</div>
+   <div class='tagline'>Smart Phishing Protection</div>
   </div>
-  <div id='history-list' class='history-list'></div>
+  <div class='default-body'>
+   <div class='manual-scan'>
+    <input type='text' id='manual-url' placeholder='Paste a URL to scan...' />
+    <button id='btn-scan'>SCAN</button>
+   </div>
+   <div id='manual-result' class='manual-result hidden'></div>
+   <div class='history-header'>
+    <span>Recent Scans</span>
+    <button id='btn-clear' class='clear-btn'>Clear Data</button>
+   </div>
+   <div id='history-list' class='history-list'></div>
+  </div>
  </div>
+
 </body>
 <script src='rules.js'></script>
 <script src='history.js'></script>
-<script src='redirect-checker.js'></script>
 <script src='ai-helper.js'></script>
 <script src='popup.js'></script>
 </html>
